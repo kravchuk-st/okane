@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お金の統計情報｜金融電卓～積立計算・取崩計算～</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/abic.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="css/blue.css"/>
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/fp_info.js" type="text/javascript"></script>
+  <script src="js/abic.js" type="text/javascript"></script>
+  <script src="js/1300_dentaku.js" type="text/javascript"></script>
+  <script src="js/tracking.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function() {
+      set_menu(1300);
+      func12();
+    });
+  </script>
+</head>
+<body class="dentaku">
+
+  <header class="header menu">
+    <div class="container">
+      <a class="header__logo" href="./0000_menu.html">
+        <h1 class="header-title">お金の<b>統計情報</b></h1>
+        <p class="header-subtitle"><span class="current_year">2022</span>年度版</p>
+      </a>
+      <div class="header__title">
+        <span class="text-lg">金融電卓</span>
+      </div>
+    </div>
+
+    <div class="container-sp d-block d-md-none">
+      <div class="d-flex">
+        <div class="title">金融電卓</div>
+
+        <div class="header__burger">
+          <button class="burger btn btn-reset" id="burger">
+            <span class="burger__line"></span>
+          </button>
+          <p class="burger-text">メニユ一</p>
+        </div>
+
+        <nav class="nav">
+          <ul class="nav__list list-reset">
+            <li class="nav__item "><a class="nav__link" href="./0000_menu.html">TOP</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0100_nichijo.html">日常生活</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0200_kekkon.html">結婚</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0300_shussan.html">出産</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0400_kyouiku.html">教育</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0500_juutaku.html">住宅</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0600_nyuuin.html">入院•介護</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0700_jidousha.html">自動車</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0800_ryokou.html">旅行</a></li>
+            <li class="nav__item"><a class="nav__link" href="./0900_teinen.html">定年退職</a></li>
+            <li class="nav__item"><a class="nav__link" href="./1000_rougo.html">老後生活</a></li>
+            <li class="nav__item"><a class="nav__link" href="./1100_rougoshikin.html">老後資金</a></li>
+            <li class="nav__item"><a class="nav__link" href="./1200_manichi.html">万一のとき</a></li>
+            <li class="nav__item">
+              <div class="header__burger">
+                <button class="burger btn btn-reset burger--active" id="burger-close">
+                  <span class="burger__line"></span>
+                </button>
+                <p class="burger-text">閉じる</p>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="page cover" style="background-image: url(img/1300_dentaku.jpg);">
+
+    <div id="subtitle_wrap">
+      <div id="content_title">
+        金融電卓
+      </div>
+
+      <div class="subtitle" id="info1" style="position:absolute; left: 480px; top: 50px; width: 300px; height: 24px;">
+        取崩計算（受取期間
+      </div>
+      <select id="dentaku_select"></select>
+    </div>
+
+    <div class="info" id="info2" style="position:absolute; left: 280px; top: 100px; width: 500px; height: 24px;">
+    手元資金から毎月一定の金額を取り崩していった場合、<br>
+    どの位の期間受け取ることができるのかを計算します。</div>
+    
+    <div class="colinfo info_color" id="column1left" style="position:absolute; left: 260px; top: 200px; width: 120px; height: 30px;">現在の資金残高：</div>
+    <div class="colinfo info_color" id="column2left" style="position:absolute; left: 260px; top: 255px; width: 120px; height: 30px;">毎月の受取金額：</div>
+    <div class="colinfo info_color" id="column3left" style="position:absolute; left: 260px; top: 310px; width: 120px; height: 30px;">運用利回り(想定)：</div>
+    <div class="colinfo info_color" id="column4left" style="position:absolute; left: 260px; top: 365px; width: 120px; height: 30px;">運用利回り(想定)：</div>
+    
+    <div class="input12" id="column1" style="position:absolute; left: 360px; top: 194px; width: 154px; height: 36px; background-image: url(img/1300_dentaku_form.jpg); line-height: 36px;"></div>
+
+    <div class="input12" id="column2" style="position:absolute; left: 360px; top: 249px; width: 154px; height: 36px; background-image: url(img/1300_dentaku_form.jpg); line-height: 36px;"></div>
+    <div class="input12" id="column3" style="position:absolute; left: 360px; top: 304px; width: 154px; height: 36px; background-image: url(img/1300_dentaku_form.jpg); line-height: 36px;"></div>
+    <div class="input12" id="column4" style="position:absolute; left: 360px; top: 359px; width: 154px; height: 36px; background-image: url(img/1300_dentaku_form.jpg); line-height: 36px;"></div>
+    
+    <div class="colinfo units" id="column1right" style="position:absolute; left: 520px; top: 200px; width: 150px; height: 30px;">万円</div>
+    <div class="colinfo units" id="column2right" style="position:absolute; left: 520px; top: 255px; width: 150px; height: 30px;">万円</div>
+    <div class="colinfo units" id="column3right" style="position:absolute; left: 520px; top: 310px; width: 150px; height: 30px;">％</div>
+    <div class="colinfo units" id="column4right" style="position:absolute; left: 520px; top: 365px; width: 150px; height: 30px;">％</div>
+    
+    <div id="calc" style="position:absolute; left: 290px; top: 410px; width: 160px; height: 44px;"><img src="img/calculate_area/calculate_off.png" alt="" /></div>
+    <div id="calcon" style="position:absolute; left: 290px; top: 410px; width: 160px; height: 44px;"><img src="img/calculate_area/calculate_on.png" alt="" /></div>
+    
+    <div id="calcclear" style="position:absolute; left: 460px; top: 410px; width: 110px; height: 44px;"><img src="img/calculate_area/clear_off.png" alt="" /></div>
+    <div id="calcclearon" style="position:absolute; left: 460px; top: 410px; width: 110px; height: 44px;"><img src="img/calculate_area/clear_on.png" alt="" /></div>
+    
+    <div id="resultimg" style="position:absolute; left: 292px; top: 478px; width: 280px; height: 200px; background-image: url(img/1300_dentaku_result.jpg);"></div>
+    <div id="result" class="result" style="position:absolute; left: 302px; top: 490px; width: 260px; height: 156px; "></div>
+    
+        <div id="radio1" style="position:absolute; left: 617px; top: 196px; width: 160px; height: 52px;">
+        <img id="radio1on" src="img/category_area/cate1_b1_on.png" alt="" />
+        <img id="radio1off" src="img/category_area/cate1_b1_off.png" alt="" /></div>
+        <div id="radio2" style="position:absolute; left: 803px; top: 196px; width: 160px; height: 52px;">
+        <img id="radio2on" src="img/category_area/cate2_b1_on.png" alt="" />
+        <img id="radio2off" src="img/category_area/cate2_b1_off.png" alt="" /></div>
+        <div id="radio3" style="position:absolute; left: 617px; top: 252px; width: 160px; height: 52px;">
+        <img id="radio3on" src="img/category_area/cate1_b2_on.png" alt="" />
+        <img id="radio3off" src="img/category_area/cate1_b2_off.png" alt="" /></div>
+        <div id="radio4" style="position:absolute; left: 803px; top: 252px; width: 160px; height: 52px;">
+        <img id="radio4on" src="img/category_area/cate2_b2_on.png" alt="" />
+        <img id="radio4off" src="img/category_area/cate2_b2_off.png" alt="" /></div>
+        <div id="radio5" style="position:absolute; left: 617px; top: 308px; width: 160px; height: 52px;">
+        <img id="radio5on" src="img/category_area/cate1_b3_on.png" alt="" />
+        <img id="radio5off" src="img/category_area/cate1_b3_off.png" alt="" /></div>
+        <div id="radio6" style="position:absolute; left: 803px; top: 308px; width: 160px; height: 52px;">
+        <img id="radio6on" src="img/category_area/cate2_b3_on.png" alt="" />
+        <img id="radio6off" src="img/category_area/cate2_b3_off.png" alt="" /></div>
+    
+    <!--電卓ボタン-->
+    <div id="num7" style="position:absolute; left: 616px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn7_off.png" alt="" /></div>
+    <div id="num8" style="position:absolute; left: 688px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn8_off.png" alt="" /></div>
+    <div id="num9" style="position:absolute; left: 760px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn9_off.png" alt="" /></div>
+    <div id="numbs" style="position:absolute; left: 832px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_bs_off.png" alt="" /></div>
+    <div id="numclear" style="position:absolute; left: 904px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_c_off.png" alt="" /></div>
+    
+    <div id="num4" style="position:absolute; left: 616px; top: 454px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn4_off.png" alt="" /></div>
+    <div id="num5" style="position:absolute; left: 688px; top: 454px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn5_off.png" alt="" /></div>
+    <div id="num6" style="position:absolute; left: 760px; top: 454px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn6_off.png" alt="" /></div>
+    
+    <div id="num1" style="position:absolute; left: 616px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn1_off.png" alt="" /></div>
+    <div id="num2" style="position:absolute; left: 688px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn2_off.png" alt="" /></div>
+    <div id="num3" style="position:absolute; left: 760px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn3_off.png" alt="" /></div>
+    <div id="numup" style="position:absolute; left: 832px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_top_off.png" alt="" /></div>
+    <div id="numenter" style="position:absolute; left: 904px; top: 534px; width: 62px; height: 143px;"><img src="img/dentaku_area/btn_enter_off.png" alt="" /></div>
+    
+    <div id="num0" style="position:absolute; left: 616px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn0_off.png" alt="" /></div>
+    <div id="num00" style="position:absolute; left: 688px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn00_off.png" alt="" /></div>
+    <div id="numdot" style="position:absolute; left: 760px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_period_off.png" alt="" /></div>
+    <div id="numdown" style="position:absolute; left: 832px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_bottom_off.png" alt="" /></div>
+    <!--電卓ボタン-->
+    <div id="num7img" style="display: none;position:absolute; left: 616px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn7_on.png" alt="" /></div>
+    <div id="num8img" style="display: none;position:absolute; left: 688px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn8_on.png" alt="" /></div>
+    <div id="num9img" style="display: none;position:absolute; left: 760px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn9_on.png" alt="" /></div>
+    <div id="numbsimg" style="display: none;position:absolute; left: 832px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_bs_on.png" alt="" /></div>
+    <div id="numclearimg" style="display: none;position:absolute; left: 904px; top: 372px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_c_on.png" alt="" /></div>
+    
+    <div id="num4img" style="display: none;position:absolute; left: 616px; top: 454px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn4_on.png" alt="" /></div>
+    <div id="num5img" style="display: none;position:absolute; left: 688px; top: 454px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn5_on.png" alt="" /></div>
+    <div id="num6img" style="display: none;position:absolute; left: 760px; top: 454px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn6_on.png" alt="" /></div>
+    
+    <div id="num1img" style="display: none;position:absolute; left: 616px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn1_on.png" alt="" /></div>
+    <div id="num2img" style="display: none;position:absolute; left: 688px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn2_on.png" alt="" /></div>
+    <div id="num3img" style="display: none;position:absolute; left: 760px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn3_on.png" alt="" /></div>
+    <div id="numupimg" style="display: none;position:absolute; left: 832px; top: 534px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_top_on.png" alt="" /></div>
+    <div id="numenterimg" style="display: none;position:absolute; left: 904px; top: 534px; width: 62px; height: 143px;"><img src="img/dentaku_area/btn_enter_on.png" alt="" /></div>
+    
+    <div id="num0img" style="display: none;position:absolute; left: 616px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn0_on.png" alt="" /></div>
+    <div id="num00img" style="display: none;position:absolute; left: 688px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn00_on.png" alt="" /></div>
+    <div id="numdotimg" style="display: none;position:absolute; left: 760px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_period_on.png" alt="" /></div>
+    <div id="numdownimg" style="display: none;position:absolute; left: 832px; top: 616px; width: 62px; height: 62px;"><img src="img/dentaku_area/btn_bottom_on.png" alt="" /></div>
+    
+    <div id="cursor" class="cursor" style="position:absolute; background: #888; text-align: right; left: 410px; top: 223px; width: 16px; height: 30px;"></div>
+  </div>
+
+  <footer>
+    <div>
+      © <span class="current_year">2022</span> NTT DATA ABIC Co, Ltd
+    </div>
+  </footer>
+</body>
+
+ <script src="./js/burger.js"></script>
+</html>

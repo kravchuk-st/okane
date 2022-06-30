@@ -1,0 +1,56 @@
+header {
+  background-color: #268cbf;
+}
+
+.header-btn{
+  background-color: #175473;
+}
+
+.header-btn.btn-active{
+  color: #278fbd;
+}
+
+.header__btns .btn-active:not(:last-child){
+  background-image: url("../img/svg/blue/play.svg");
+}
+
+.nav__list,
+.nav__item{
+  background-color: #268bbf;
+}
+
+.calculator{
+  background-color: #268cbf;
+}
+
+.sub-header button {
+  color: #268cbf;
+}
+
+.sub-header .round-btn {
+  background-color: #268cbf !important;
+  color: #fff;
+}
+
+
+#result::before {
+  color: #175473;
+}
+
+.message {
+  border: 2px solid #268CBF;
+  color: #268CBF;
+  background: #fff url(./../img/svg/blue/message.svg) no-repeat 10px center;
+}
+
+@media (max-width: 768px) {
+  #calcclear::before, #calcclearon::before {
+    color: #268cbf;
+    border-color: #268cbf;
+  }
+
+  .info_color {
+    color: #175473;
+  }
+}
+
