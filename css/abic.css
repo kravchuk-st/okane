@@ -130,6 +130,8 @@
 }
 
 .btn-reset {
+  margin: 0;
+  padding: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -517,7 +519,7 @@ header .title {
 } */
 
 footer {
-  font-size: 8px;
+  font-size: 10px;
   font-weight: bold;
   padding: 30px 15px 15px 15px;
 }
@@ -860,6 +862,76 @@ footer div:last-child {
   top: 12%;
 }
 
+.message-kyouiku{
+  top: 2.8%;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.btns .btn {
+  width: 100%;
+  height: 8vw;
+  color: #bebebe;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+}
+
+.btns .btn:first-child {
+  border-radius: 2rem 0 0 2rem;
+}
+
+.btns .btn:last-child {
+  border-radius: 0 2rem 2rem 0;
+}
+
+.btns .btn:not(.btn-active) + .btn:not(.btn-active) {
+  border-left: 2px solid #c6c6c6;
+}
+
+.btns .btn.btn-active {
+  color: #fff;
+  background-color: #2e775c;
+  border: none;
+  cursor: default;
+}
+
+.tabl > * > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vw;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tabl > .row1 > div {
+  top: 153.5vw;
+}
+
+.tabl > .row2 > div {
+  top: 160.5vw;
+}
+
+.pr1_5 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.total {
+  top: 174vw;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #56988b;
+  text-align: right;
+}
+
 @media (min-width: 769px) {
   .page.cover {
     height: 668px;
@@ -884,13 +956,6 @@ footer div:last-child {
 
   .dentaku__sp {
     display: none;
-  }
-}
-
-@media (max-width: 400px) {
-  .message {
-    top: 7.5%;
-    font-size: 13px;
   }
 }
 
@@ -963,8 +1028,6 @@ footer div:last-child {
     text-align: center;
     border-radius: 25px;
   }
-
-
 
   #calc img, #calcon img, #calcclear img, #calcclearon img {
     display: none;
@@ -1099,5 +1162,129 @@ footer div:last-child {
     margin-left: 10px;
     font-size: 12px;
     font-weight: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  .tabl > * > * {
+    font-size: 14px;
+  }
+  
+  .tabl > .row1 > div {
+    top: 156.5vw;
+  }
+  
+  .tabl > .row2 > div {
+    top: 163.5vw;
+  }
+  
+  .total {
+    top: 176vw;
+  }
+}
+
+@media (max-width: 542px) {
+  .tabl > * > * {
+    font-size: 12px;
+  }
+  
+  .tabl > .row1 > div {
+    top: 158.5vw;
+  }
+  
+  .tabl > .row2 > div {
+    top: 165.5vw;
+  }
+  
+  .total {
+    top: 178vw;
+  }
+}
+
+@media (max-width: 490px) {
+  .tabl > * > * {
+    font-size: 10px;
+  }
+  
+  .tabl > .row1 > div {
+    top: 161vw;
+  }
+  
+  .tabl > .row2 > div {
+    top: 168vw;
+  }
+  
+  .total {
+    top: 180vw;
+  }
+}
+
+@media (max-width: 440px) {
+  .tabl > .row1 > div {
+    top: 163vw;
+  }
+  
+  .tabl > .row2 > div {
+    top: 170vw;
+  }
+  
+  .total {
+    top: 182vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .message {
+    top: 7.5%;
+    font-size: 13px;
+  }
+
+  .message-kyouiku{
+    top: 2.2%;
+  }
+
+  .total {
+    font-size: 2.5rem;
+  }
+
+  .tabl > .row1 > div {
+    top: 166vw;
+  }
+  
+  .tabl > .row2 > div {
+    top: 173vw;
+  }
+}
+
+@media (max-width: 380px) {
+  .tabl > .row1 > div {
+    top: 168vw;
+  }
+  
+  .tabl > .row2 > div {
+    top: 175vw;
+  }
+  
+  .total {
+    top: 184vw;
+  }
+}
+
+@media (max-width: 355px) {
+  .tabl > * > * {
+    font-size: 8px;
+  }
+
+  .tabl > .row1 > div {
+    top: 170vw;
+  }
+  
+  .tabl > .row2 > div {
+    top: 177vw;
+  }
+  
+  .total {
+    top: 188vw;
+    font-size: 2.2rem;
   }
 }

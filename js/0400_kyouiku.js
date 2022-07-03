@@ -144,4 +144,117 @@ func5=function(){
 						['#radio7_2',{on:'#radio7_2on',off:'#radio7_2off',x:10,y:14,w:21,h:21}]],recalc);
 
 	recalc();
+
+	let totalSum = 0;
+	let year = 3;
+	let flag = false;
+	let flag2 = false;
+	let indArr = [0, 0];
+	const sum = [22.3647, 32.1281, 48.8397, 45.7380, 81.7800, 53.5800];
+	const pr = {
+		v1: [22.3647, 52.7916],
+		v2: [32.1281, 159.8691],
+		v3: [48.8397, 140.6433],
+		v4: [45.7380, 96.9911],
+		v5: {
+			table1: [81.7800, 116.6922, 81.7800, 154.4962,	81.7800, 482.2395, 90.3000, 39.3000],
+			table2: [53.5800, 78.5581, 53.5800, 110.5616, 53.5800, 286.7802, 90.3000, 0.0000],
+		}
+	}
+
+	$('.btns').click(function(e){
+		let target = $( e.target );
+		if ( target.is( ".btn" ) ) {
+			$(this).children().removeClass("btn-active");
+			target.addClass("btn-active");
+		}
+	});
+
+	$('.btn').click(function(e){
+		let targetText = e.target.innerText;
+		let btnsId = $(this).parent().attr("id");
+		let ind = 0;
+		switch (btnsId) { 
+			case 'btns1_1':
+				$(".td1_1").text(targetText);
+				targetText === "公立" ? sum[0] = pr.v1[0] : sum[0] = pr.v1[1];
+				$(".pr1_1").text(Math.round(sum[0]) + '万円');
+				break;
+			case 'btns1_2': 
+				$(".td1_2").text(targetText);
+				targetText === "公立" ? sum[1] = pr.v2[0] : sum[1] = pr.v2[1];
+				$(".pr1_2").text(Math.round(sum[1]) + '万円');
+				break;
+			case 'btns2_1': 
+				$(".td1_3").text(targetText);
+				targetText === "公立" ? sum[2] = pr.v3[0] : sum[2] = pr.v3[1];
+				$(".pr1_3").text(Math.round(sum[2]) + '万円');
+				break;
+			case 'btns2_2': 
+				$(".td1_4").text(targetText);
+				targetText === "公立" ? sum[3] = pr.v4[0] : sum[3] = pr.v4[1];
+				$(".pr1_4").text(Math.round(sum[3]) + '万円');
+				break;
+			case 'btns3_1': 
+				$(".td1_5_1").text(targetText);
+				targetText === '国公立' ? indArr[0] = 0 : indArr[0] = 1;
+				ind = indArr.reduce((a,b) => a + b, 0);
+				if (flag2) {
+					sum[4] = pr.v5.table1[ind] + pr.v5.table1[6] + pr.v5.table1[7];
+					sum[5] = pr.v5.table2[ind] + pr.v5.table2[6] + pr.v5.table2[7];
+				} else {
+					sum[4] = pr.v5.table1[ind];
+					sum[5] = pr.v5.table2[ind];
+				}
+				$(".pr1_5_1").text(`${Math.round(sum[4])} 万円`);
+				$(".pr1_5_2").text(`${Math.round(sum[5])} 万円`);
+				break;
+			case 'btns4_1': 
+				$(".td1_5_2").text(targetText);
+				if (targetText === '理系') {
+					indArr[1] = 2;
+					flag = false;
+				} else if (targetText === '医歯系') {
+					indArr[1] = 4;
+					flag = true;
+				} else {
+					indArr[1] = 0;
+					flag = false;
+				}
+				ind = indArr.reduce((a,b) => a + b, 0);
+				if (flag2) {
+					sum[4] = pr.v5.table1[ind] + pr.v5.table1[6] + pr.v5.table1[7];
+					sum[5] = pr.v5.table2[ind] + pr.v5.table2[6] + pr.v5.table2[7];
+				} else {
+					sum[4] = pr.v5.table1[ind];
+					sum[5] = pr.v5.table2[ind];
+				}
+				$(".pr1_5_1").text(`${Math.round(sum[4])} 万円`);
+				$(".pr1_5_2").text(`${Math.round(sum[5])} 万円`);
+				break;
+			case 'btns5_1': 
+				$(".td1_5_3").text(targetText);
+				ind = indArr.reduce((a,b) => a + b, 0);
+				if (targetText === '下宿') {
+					flag2 = true;
+					sum[4] = pr.v5.table1[ind] + pr.v5.table1[6] + pr.v5.table1[7];
+					sum[5] = pr.v5.table2[ind] + pr.v5.table2[6] + pr.v5.table2[7];
+				} else {
+					flag2 = false;
+					sum[4] = pr.v5.table1[ind];
+					sum[5] = pr.v5.table2[ind];
+				}
+				$(".pr1_5_1").text(`${Math.round(sum[4])} 万円`);
+				$(".pr1_5_2").text(`${Math.round(sum[5])} 万円`);
+				break;
+			default:
+		}
+
+		if (flag) {
+			year = 5;
+		} else year = 3;
+
+		totalSum = sum[0]*3 + sum[1]*6 + sum[2]*3 + sum[3]*3 + sum[4] + sum[5]*year;
+		$(".total").text(Math.round(totalSum));
+	});
 };
