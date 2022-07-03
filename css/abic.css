@@ -149,8 +149,9 @@
   border: none;
 }
 
-button:focus{
-  box-shadow: none;
+button:active, button:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 body {
@@ -964,6 +965,10 @@ footer div:last-child {
 }
 
 @media (max-width: 768px) {
+  body::-webkit-scrollbar {
+    width: 0px;
+  }
+
   .calculator {
     display: block;
   }
