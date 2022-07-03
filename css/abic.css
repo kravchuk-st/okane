@@ -149,6 +149,10 @@
   border: none;
 }
 
+button:focus{
+  box-shadow: none;
+}
+
 body {
   background: url(./../img/update/main-bg.jpg) repeat 0 0;
 	width: 1024px;
@@ -1220,6 +1224,10 @@ footer div:last-child {
 }
 
 @media (max-width: 440px) {
+  .message.message-kyouiku {
+    top: 2%;
+  }
+
   .tabl > .row1 > div {
     top: 163vw;
   }
@@ -1237,10 +1245,6 @@ footer div:last-child {
   .message {
     top: 7.5%;
     font-size: 13px;
-  }
-
-  .message-kyouiku{
-    top: 2.2%;
   }
 
   .total {
