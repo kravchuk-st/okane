@@ -31,7 +31,7 @@ func12=function(){
     }else if (key>=96 && key<=105){  //0-9
       column.add(String.fromCharCode(key-96+0x30));
     }
-    return true;
+    return false;
   };
 //  document.onkeypress = keydown;
   document.onkeydown = keydown;
@@ -332,8 +332,6 @@ func12=function(){
 //="（受取期間）"&IF(ROUNDDOWN(G10/12,0)>0,ROUNDDOWN(G10/12,0)&"年"&IF(ROUNDDOWN(G10-ROUNDDOWN(G10/12,0)*12,0)>0,ROUNDDOWN(G10-ROUNDDOWN(G10/12,0)*12,0)&"ヵ月、","間、"),ROUNDDOWN(G10,0)&"ヵ月、")&"毎月"&TEXT(D6,"0")&"万円を受け取ることができます。"
 
 	setcol=function(){
-    // console.log(_radio);
-
 		var col=list[_radio.value];
 		$('#info1').html(col.title);
 		$('#info2').html(col.info);
@@ -463,9 +461,9 @@ hash=[
 			num=(num!=undefined)?num:this.current;
 			var idlist=["#column1","#column2","#column3","#column4"];
 			var elem=$(idlist[num]);
-			var str="          "+this.row[num];
+			var str=""+this.row[num];
 			str=str.substring(-this.max[num]);
-			elem.html(str);
+      elem.val(str);
 		}
 	}
 	setcol();
